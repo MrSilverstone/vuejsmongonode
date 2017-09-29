@@ -11,6 +11,15 @@ const Video = new Schema({
   },
   Category: {
       type: String
+  },
+  ViewCount: {
+      type: Number
+  },
+  LikeCount:{
+      type: Number
+  },
+  UserId: {
+      type: Object
   }
 },{
     collection: 'Videos'

@@ -10,11 +10,7 @@ Vue.use(VueAxios, axios);
 
 import App from './App.vue';
 import Home from './components/Home.vue'
-import GoogleMap from './components/GoogleMap.vue';
 import Topic from './components/Topic.vue'
-
-
-import HeaderMenu from './components/HeaderMenu.vue'
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';

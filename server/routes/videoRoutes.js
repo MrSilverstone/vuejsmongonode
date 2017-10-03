@@ -24,10 +24,10 @@ videoRoutes.route('/add').post((req, res) => {
 
 videoRoutes.route('/').get((req, res) => {
 
-    Video.find((err, videos) => {
-        if (err) {
-            console.log(err)
-        } else {
+    Video.find()
+    .populate('user', 'email picture')
+    .exec((err, videos) => {
+        if (!err) {
             res.json(videos)
         }
     })

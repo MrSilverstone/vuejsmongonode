@@ -6,7 +6,7 @@
 
 export default {
   name: 'google-map',
-  props: ['name', 'videos'],
+  props: ['name', 'videos', 'clustered'],
   data() {
     return {
       mapName: this.name + "-map",
@@ -15,6 +15,9 @@ export default {
     }
   },
   mounted() {
+    console.log('clustered')
+    console.log(this.clustered)
+
     const element = document.getElementById(this.mapName)
     const options = {
       zoom: 14,
@@ -22,10 +25,11 @@ export default {
     }
     this.map = new google.maps.Map(element, options);
   },
+  created() {
+    this.eventHub.$on('resize', this.resize)
+  },
   watch: {
     videos: function(v) {
-      console.log(this.videos)
-
       this.markers = []
 
       this.videos.forEach(video => {
@@ -35,6 +39,18 @@ export default {
           map: this.map
         })
       })
+    }
+  },
+  methods: {
+    resize() {
+
+      const intervalId = setInterval(() => {
+        google.maps.event.trigger(this.map, 'resize')
+      }, 200)
+
+      setTimeout(() => {
+        clearInterval(intervalId)
+      }, 1100) // 1 second animation
     }
   }
 }

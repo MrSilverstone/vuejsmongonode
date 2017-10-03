@@ -60,7 +60,7 @@ export default {
 </script>
 <style>
 #menu {
-    min-height: 74px;
+    height: 74px;
     padding-right: 24px;
     padding-left: 24px;
     background: white;

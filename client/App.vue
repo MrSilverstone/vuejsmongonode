@@ -27,7 +27,19 @@
 </style>
 
 <script>
+import Vue from 'vue'
 import HeaderMenu from './components/HeaderMenu.vue'
+
+const eventHub = new Vue() // Single event hub
+
+Vue.mixin({
+  data: function() {
+    return {
+      eventHub: eventHub
+    }
+  }
+})
+
 
 export default {
     components: {

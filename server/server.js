@@ -25,9 +25,6 @@ app.use(cors());
 app.use('/videos', videoRoutes)
 app.use('/users', userRoutes)
 
-
-
-
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log('Listening on port ' + port);

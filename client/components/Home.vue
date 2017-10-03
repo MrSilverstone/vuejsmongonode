@@ -1,8 +1,11 @@
 <template>
-    <div>
-        <google-map v-bind:videos="videos" name="example">
+    <div class="main-contenair">
+        <google-map v-bind:class="{ open : opened }" v-bind:videos="videos" name="main" v-bind:clustered="true">
         </google-map>
-        <div id="side-menu">
+        <div id="side-menu" v-bind:class="{ open : opened }">
+            <md-button class="md-fab md-clean" @click="toggleMenu">
+                <md-icon v-bind:class="{ open : opened }"> {{ opened ? 'keyboard_arrow_right' : 'keyboard_arrow_left' }}</md-icon>
+            </md-button>
         </div>
     </div>
 </template>
@@ -15,7 +18,8 @@ export default {
     },
     data() {
         return {
-            videos: []
+            videos: [],
+            opened: true
         }
     },
     created() {
@@ -28,6 +32,10 @@ export default {
             this.axios.get(uri).then(response => {
                 this.videos = response.data
             })
+        },
+        toggleMenu() {
+            this.opened = !this.opened
+            this.eventHub.$emit('resize')
         }
     }
 }
@@ -43,13 +51,37 @@ body {
     position: absolute;
     width: 100%;
     height: auto;
+    left: 0;
+    transition-property: width;
+    transition-duration: 1s;
 }
 
-.side-menu {
+.google-map.open {
+    width: 50%;
+}
+
+#side-menu {
     position: absolute;
     z-index: 2;
-    width: 50vw;
-    height: auto;
+    width: 0%;
+    top: 74px;
+    bottom: 0;
+    right: 0;
+    transition-property: width;
+    transition-duration: 1s;    
 }
 
+#side-menu.open {
+    width: 50%;
+}
+
+.md-fab {
+    position: absolute;
+    bottom: 30px;
+    margin-left: -120px;
+}
+
+.md-fab.open {
+    margin-left: -28px;
+}
 </style>

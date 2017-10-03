@@ -15,7 +15,12 @@ import Topic from './components/Topic.vue'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
-Vue.use(BootstrapVue);
+import 'vue-material/dist/components/mdIcon/index.css'
+import 'vue-material/dist/components/mdButton/index.css'
+import VueMaterial from 'vue-material'
+
+Vue.use(BootstrapVue)
+Vue.use(VueMaterial)
 
 const routes = [
     {

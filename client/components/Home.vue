@@ -21,7 +21,7 @@ export default {
 
     methods: {
         fetchVideos() {
-            const uri = 'http://localhost:4000/videos'
+            const uri = '/videos'
             this.axios.get(uri).then(response => {
                 this.videos = response.data
             })

@@ -10,7 +10,20 @@
 </template>
 
 <style>
+.fade-enter-active,
+.fade-leave-active {
+    transition-property: opacity;
+    transition-duration: .25s;
+}
 
+.fade-enter-active {
+    transition-delay: .25s;
+}
+
+.fade-enter,
+.fade-leave-active {
+    opacity: 0
+}
 </style>
 
 <script>
@@ -20,14 +33,22 @@ export default {
     components: {
         HeaderMenu,
     },
+    methods: {
+        auth() {
+            const uri = '/users/59d338c0f35fa629e02d4f9d'
+            this.axios.get(uri).then(response => {
+                this.user = response.data;
+                console.log(this.user)
+            })
+        }
+    },
     data() {
         return {
-            user: {
-                email: 'louis.mondesir@gmail.com',
-                name: 'Louis Mondesir',
-                profilePicture: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p50x50/17951811_10211666418031224_6621657611393351503_n.jpg?oh=b1d33b84fc793024ad6f3131f2e3b10d&oe=5A40930C'
-            }
+            user: null
         }
+    },
+    created() {
+        this.auth()
     }
 }
 </script>

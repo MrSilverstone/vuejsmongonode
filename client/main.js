@@ -20,15 +20,19 @@ Vue.use(BootstrapVue);
 const routes = [
     {
         name: 'Home',
-        path: '/',
+        path: '/home',
         component: Home
     },
     {
         name: 'Topic',
         path: '/topic',
         component: Topic
+    },
+    {
+        path: '*',
+        redirect: '/home'
     }
 ]
 
-const router = new VueRouter({ mode: 'history', routes: routes });
+const router = new VueRouter({history: true, mode: 'history', routes: routes });
 new Vue(Vue.util.extend({ router }, App)).$mount('#app');

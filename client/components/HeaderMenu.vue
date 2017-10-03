@@ -32,19 +32,19 @@
                 </li>
 
                 <li>
-                    <router-link to="/">Map</router-link>
+                    <router-link to="/home">Map</router-link>
                 </li>
                 <li>
-                    <router-link to="topic">Topic</router-link>
+                    <router-link to="/topic">Topic</router-link>
                 </li>
                 <li>
-                    <router-link to="blog">Blog</router-link>
+                    <router-link to="/blog">Blog</router-link>
                 </li>
                 <li>
                     <router-link to="Contest">Contest</router-link>
                 </li>
                 <template v-if="user">
-                    <li><img :src="user.profilePicture" class="img-responsive img-circle img-profile" /></li>
+                    <li><img :src="user.picture" class="img-responsive img-circle img-profile" /></li>
                 </template>
                 <template v-else>
                     <li><a href="javascript:showLoginMenu()">Signup</a></li>

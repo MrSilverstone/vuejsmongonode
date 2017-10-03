@@ -1,6 +1,9 @@
 <template>
     <div>
-        <google-map v-bind:videos="videos" name="example"></google-map>
+        <google-map v-bind:videos="videos" name="example">
+        </google-map>
+        <div id="side-menu">
+        </div>
     </div>
 </template>
 <script>
@@ -41,4 +44,12 @@ body {
     width: 100%;
     height: auto;
 }
+
+.side-menu {
+    position: absolute;
+    z-index: 2;
+    width: 50vw;
+    height: auto;
+}
+
 </style>

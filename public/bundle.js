@@ -1777,15 +1777,18 @@ _vue2.default.use(_bootstrapVue2.default);
 
 const routes = [{
     name: 'Home',
-    path: '/',
+    path: '/home',
     component: _Home2.default
 }, {
     name: 'Topic',
     path: '/topic',
     component: _Topic2.default
+}, {
+    path: '*',
+    redirect: '/home'
 }];
 
-const router = new _vueRouter2.default({ mode: 'history', routes: routes });
+const router = new _vueRouter2.default({ history: true, mode: 'history', routes: routes });
 new _vue2.default(_vue2.default.util.extend({ router }, _App2.default)).$mount('#app');
 
 /***/ }),
@@ -28958,7 +28961,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.fade-enter-active,\r\n.fade-leave-active {\r\n    transition-property: opacity;\r\n    transition-duration: .25s;\n}\n.fade-enter-active {\r\n    transition-delay: .25s;\n}\n.fade-enter,\r\n.fade-leave-active {\r\n    opacity: 0\n}\r\n", ""]);
 
 // exports
 
@@ -29017,16 +29020,37 @@ exports.default = {
     components: {
         HeaderMenu: _HeaderMenu2.default
     },
+    methods: {
+        auth() {
+            const uri = '/users/59d338c0f35fa629e02d4f9d';
+            this.axios.get(uri).then(response => {
+                this.user = response.data;
+                console.log(this.user);
+            });
+        }
+    },
     data() {
         return {
-            user: {
-                email: 'louis.mondesir@gmail.com',
-                name: 'Louis Mondesir',
-                profilePicture: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p50x50/17951811_10211666418031224_6621657611393351503_n.jpg?oh=b1d33b84fc793024ad6f3131f2e3b10d&oe=5A40930C'
-            }
+            user: null
         };
+    },
+    created() {
+        this.auth();
     }
 }; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -29242,14 +29266,16 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "li",
-                [_c("router-link", { attrs: { to: "/" } }, [_vm._v("Map")])],
+                [
+                  _c("router-link", { attrs: { to: "/home" } }, [_vm._v("Map")])
+                ],
                 1
               ),
               _vm._v(" "),
               _c(
                 "li",
                 [
-                  _c("router-link", { attrs: { to: "topic" } }, [
+                  _c("router-link", { attrs: { to: "/topic" } }, [
                     _vm._v("Topic")
                   ])
                 ],
@@ -29259,7 +29285,9 @@ var render = function() {
               _c(
                 "li",
                 [
-                  _c("router-link", { attrs: { to: "blog" } }, [_vm._v("Blog")])
+                  _c("router-link", { attrs: { to: "/blog" } }, [
+                    _vm._v("Blog")
+                  ])
                 ],
                 1
               ),
@@ -29279,7 +29307,7 @@ var render = function() {
                     _c("li", [
                       _c("img", {
                         staticClass: "img-responsive img-circle img-profile",
-                        attrs: { src: _vm.user.profilePicture }
+                        attrs: { src: _vm.user.picture }
                       })
                     ])
                   ]
@@ -29493,7 +29521,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\nbody {\r\n    padding-top: 74px;\n}\n.google-map {\r\n    top: 74px;\r\n    bottom: 0;\r\n    position: absolute;\r\n    width: 100%;\r\n    height: auto;\n}\r\n", ""]);
+exports.push([module.i, "\nbody {\r\n    padding-top: 74px;\n}\n.google-map {\r\n    top: 74px;\r\n    bottom: 0;\r\n    position: absolute;\r\n    width: 100%;\r\n    height: auto;\n}\n.side-menu {\r\n    position: absolute;\r\n    z-index: 2;\r\n    width: 50vw;\r\n    height: auto;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -29537,6 +29565,9 @@ exports.default = {
         }
     }
 }; //
+//
+//
+//
 //
 //
 //
@@ -29721,7 +29752,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [_c("google-map", { attrs: { videos: _vm.videos, name: "example" } })],
+    [
+      _c("google-map", { attrs: { videos: _vm.videos, name: "example" } }),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "side-menu" } })
+    ],
     1
   )
 }

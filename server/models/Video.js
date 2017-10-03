@@ -3,26 +3,29 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema;
 
 const Video = new Schema({
-  Title: {
+  title: {
     type: String
   },
-  YoutubeId: {
+  youtubeId: {
     type: String
   },
-  Category: {
+  category: {
       type: String
   },
-  ViewCount: {
+  viewCount: {
       type: Number
   },
-  LikeCount:{
+  likeCount:{
       type: Number
   },
-  UserId: {
-      type: Object
+  latitude: {
+      type: Number
+  },
+  longitude: {
+      type: Number
   }
 },{
-    collection: 'Videos'
+    collection: 'videos'
 });
 
 export default  mongoose.model('Video', Video);

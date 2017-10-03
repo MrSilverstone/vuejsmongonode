@@ -4,7 +4,7 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import config from './config/DB'
-import itemRoutes from './routes/itemRoutes'
+import videoRoutes from './routes/videoRoutes'
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB).then(
@@ -16,7 +16,7 @@ const app = express();
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(cors());
-app.use('/items', itemRoutes);
+app.use('/videos', videoRoutes);
 const port = process.env.PORT || 4000;
 
 const server = app.listen(port, function(){

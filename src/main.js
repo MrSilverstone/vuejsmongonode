@@ -9,7 +9,10 @@ import axios from 'axios';
 Vue.use(VueAxios, axios);
 
 import App from './App.vue';
-import Map from './components/Map.vue';
+import Home from './components/Home.vue'
+import GoogleMap from './components/GoogleMap.vue';
+import Topic from './components/Topic.vue'
+
 
 import HeaderMenu from './components/HeaderMenu.vue'
 
@@ -20,9 +23,14 @@ Vue.use(BootstrapVue);
 
 const routes = [
     {
-        name: 'Map',
+        name: 'Home',
         path: '/',
-        component: Map
+        component: Home
+    },
+    {
+        name: 'Topic',
+        path: '/topic',
+        component: Topic
     }
 ]
 

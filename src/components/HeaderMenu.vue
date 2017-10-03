@@ -81,14 +81,6 @@ export default {
     position: relative;
 }
 
-
-
-
-
-
-
-/* align glyph */
-
 .left-addon .glyphicon {
     left: 0px;
 }
@@ -96,13 +88,6 @@ export default {
 .right-addon .glyphicon {
     right: 0px;
 }
-
-
-
-
-
-
-/* add padding  */
 
 .left-addon input {
     padding-left: 30px;
@@ -194,13 +179,6 @@ a.router-link-exact-active {
 .side-menu-header {
     margin-top: 15px;
 }
-
-
-
-
-
-
-/* Google map search in front of container */
 
 .pac-container {
     z-index: 99999;

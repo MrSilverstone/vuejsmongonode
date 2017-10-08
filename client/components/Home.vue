@@ -3,18 +3,19 @@
         <google-map v-bind:class="{ open : opened }" v-bind:videos="videos" name="main" v-bind:clustered="true">
         </google-map>
         <div id="side-menu" v-bind:class="{ open : opened }">
-            <md-button class="md-fab md-clean" @click="toggleMenu">
-                <md-icon v-bind:class="{ open : opened }"> {{ opened ? 'keyboard_arrow_right' : 'keyboard_arrow_left' }}</md-icon>
-            </md-button>
+            <fab icon="keyboard_arrow_left" v-on:click.native="toggleMenu"></fab>
+
         </div>
     </div>
 </template>
 <script>
-import GoogleMap from './GoogleMap.vue'
+import googleMap from './GoogleMap.vue'
+import fab from './Fab.vue'
 
 export default {
     components: {
-        GoogleMap
+        googleMap,
+        fab
     },
     data() {
         return {
@@ -68,20 +69,20 @@ body {
     bottom: 0;
     right: 0;
     transition-property: width;
-    transition-duration: 1s;    
+    transition-duration: 1s;
 }
 
 #side-menu.open {
     width: 50%;
 }
 
-.md-fab {
+.fab {
     position: absolute;
     bottom: 30px;
     margin-left: -120px;
 }
 
-.md-fab.open {
+.fab.open {
     margin-left: -28px;
 }
 </style>

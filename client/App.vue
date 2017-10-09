@@ -47,10 +47,9 @@ export default {
     },
     methods: {
         auth() {
-            const uri = '/users/59d338c0f35fa629e02d4f9d'
+            const uri = '/users/59daeb3e11e3d143f0d50cac'
             this.axios.get(uri).then(response => {
                 this.user = response.data;
-                console.log(this.user)
             })
         }
     },

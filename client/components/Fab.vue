@@ -34,77 +34,11 @@
     -webkit-transition: all 0.15s ease-in-out;
 }
 
-.ink {
-    display: block;
-    position: absolute;
-    pointer-events: none;
-    border-radius: 50%;
-
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    -ms-transform: scale(0);
-    -o-transform: scale(0);
-    transform: scale(0);
-
-    background: #fff;
-    opacity: 1;
-}
-
-.ink {
-    border-radius: 50%;
-}
-
-.ink.animate {
-    -webkit-animation: ripple .5s linear;
-    -moz-animation: ripple .5s linear;
-    -ms-animation: ripple .5s linear;
-    -o-animation: ripple .5s linear;
-    animation: ripple .5s linear;
-}
-
-@keyframes ripple {
-    100% {
-        opacity: 0;
-        transform: scale(2.5);
-    }
-}
-
-@-webkit-keyframes ripple {
-    100% {
-        opacity: 0;
-        -webkit-transform: scale(2.5);
-        transform: scale(2.5);
-    }
-}
-
-@-moz-keyframes ripple {
-    100% {
-        opacity: 0;
-        -moz-transform: scale(2.5);
-        transform: scale(2.5);
-    }
-}
-
-@-ms-keyframes ripple {
-    100% {
-        opacity: 0;
-        -ms-transform: scale(2.5);
-        transform: scale(2.5);
-    }
-}
-
-@-o-keyframes ripple {
-    100% {
-        opacity: 0;
-        -o-transform: scale(2.5);
-        transform: scale(2.5);
-    }
-}
 </style>
 <script>
 export default {
     name: 'fab',
-    props: ['icon'],
+    props: ['icon', 'icon_clicked'],
     data() {
         return {
             pressed: false,
@@ -117,27 +51,7 @@ export default {
     methods: {
         ripple(e) {
             this.pressed = true;
-
-            console.log(e)
-
-            var x = e.pageX - rippler.offset().left - ink.width() / 2;
-            var y = e.pageY - rippler.offset().top - ink.height() / 2;
-
-
-            // set .ink diametr
-            if (!ink.height() && !ink.width()) {
-                var d = Math.max(rippler.outerWidth(), rippler.outerHeight());
-                ink.css({ height: d, width: d });
-            }
-
-            // get click coordinates
-
-
-            // set .ink position and add class .animate
-            ink.css({
-                top: y + 'px',
-                left: x + 'px'
-            }).addClass("animate");
+            
         }
     }
 }

@@ -20,8 +20,9 @@ export default {
 
     const element = document.getElementById(this.mapName)
     const options = {
-      zoom: 14,
-      center: new google.maps.LatLng(51.501527, -0.1921837)
+      center: { lat: 22.437283125281404, lng: 151.0738546875001 },
+      zoom: 3,
+      minZoom: 3
     }
     this.map = new google.maps.Map(element, options);
   },
@@ -36,9 +37,49 @@ export default {
         const position = new google.maps.LatLng(video.latitude, video.longitude);
         const marker = new google.maps.Marker({
           position,
-          map: this.map
+          youtubeId: video.youtubeId,
+          icon: {
+            url: `http://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`,
+            scaledSize: new google.maps.Size(80, 45)
+          }
         })
+        this.markers.push(marker)
       })
+
+      const clusterMarkerStyle = [
+        {
+          url: "images/markers/m1.png",
+          textColor: "#FFFFFF",
+          width: 53,
+          height: 53
+        },
+        {
+          url: "images/markers/m2.png",
+          textColor: "#FFFFFF",
+          width: 56,
+          height: 56
+        },
+        {
+          url: "images/markers/m3.png",
+          textColor: "#FFFFFF",
+          width: 66,
+          height: 66
+        },
+        {
+          url: "images/markers/m4.png",
+          textColor: "#FFFFFF",
+          width: 78,
+          height: 78
+        },
+        {
+          url: "images/markers/m5.png",
+          textColor: "#FFFFFF",
+          width: 90,
+          height: 90
+        }
+      ]
+
+      const markerCluster = new MarkerClusterer(this.map, this.markers, { styles: clusterMarkerStyle });
     }
   },
   methods: {

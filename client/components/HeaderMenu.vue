@@ -26,12 +26,6 @@
                 			</c:if>
                 -->
                 <li>
-                    <p class="button-upload btn-360">
-                        <a href="360vr" class="btn">360° VR Earth</a>
-                    </p>
-                </li>
-
-                <li>
                     <router-link to="/home">Map</router-link>
                 </li>
                 <li>

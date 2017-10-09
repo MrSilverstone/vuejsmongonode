@@ -27,7 +27,17 @@ const Video = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    oldId: Number,
+    comments: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Comment'
+        }
+    ],
+    description: String,
+    fileName: String,
+    uploadDate: { type: Date, default: Date.now }
 }, {
         collection: 'videos'
     })

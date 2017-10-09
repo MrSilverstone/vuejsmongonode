@@ -1,5 +1,5 @@
-import Video from './models/Video'
-import User from './models/User'
+import Video from './Video'
+import User from './User'
 
 import mongoose from 'mongoose'
 

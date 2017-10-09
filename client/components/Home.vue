@@ -115,7 +115,7 @@ body {
     z-index: 200;
     margin-left: -120px;
     transform: rotateZ(0deg);
-        transition-property: transform;
+    transition-property: transform;
     transition-duration: 1s;
 }
 

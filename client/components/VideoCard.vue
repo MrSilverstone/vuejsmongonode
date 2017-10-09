@@ -97,12 +97,6 @@
     padding-left: 4px;
 }
 
-@media screen and (max-width: 500px) {
-    #slider {
-        width: 100%;
-    }
-}
-
 .like-btn {
     cursor: pointer;
 }
